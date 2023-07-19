@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NoteEditorActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="20sp" />
+                <TextView
+                    android:clickable="true"
+                    android:id="@+id/clickTextSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:text="@string/save"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:layout_margin="10dp"
+        android:id="@+id/editTitle"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/note_title"
+        android:inputType=""
+        android:minHeight="48dp" />
+
+    <EditText
+        android:layout_margin="10dp"
+        android:gravity="top|left"
+        android:id="@+id/editBody"
+        android:layout_width="385dp"
+        android:layout_height="545dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/note_body"
+        android:autofillHints=""
+        android:inputType=""
+        android:minHeight="48dp"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>

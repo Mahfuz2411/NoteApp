@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Note App</string>
+    <string name="Add">Add</string>
+    <string name="headertext">Header Text</string>
+    <string name="click_here_to_see_the_description">Click here to see the description</string>
+    <string name="save">Save</string>
+    <string name="note_title">Note Tittle</string>
+    <string name="note_body">Note body</string>
+</resources>
