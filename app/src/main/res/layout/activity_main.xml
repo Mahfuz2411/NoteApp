@@ -33,9 +33,19 @@
                     android:id="@+id/clickTextAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
+                    android:layout_marginLeft="140dp"
+
                     android:clickable="true"
                     android:text="@string/Add"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/clickTextLogOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:text="@string/LogOut"
                     android:textSize="20sp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

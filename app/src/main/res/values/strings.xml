@@ -6,4 +6,5 @@
     <string name="save">Save</string>
     <string name="note_title">Note Tittle</string>
     <string name="note_body">Note body</string>
+    <string name="LogOut">Log Out</string>
 </resources>

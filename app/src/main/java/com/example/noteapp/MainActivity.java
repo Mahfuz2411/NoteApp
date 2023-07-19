@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,7 +23,13 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<String> notes = new ArrayList<>();
 //    static ArrayAdapter arrayAdapter;
     static CustomAdapter arrayAdapter;
+
+    TextView LogOut;
     TextView clickText;
+
+    String Extra = "com.example.notes";
+
+    String user;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +37,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         clickText = findViewById(R.id.clickTextAdd);
+        LogOut = findViewById(R.id.clickTextLogOut);
+
+        try{
+            user = LoginActivity.User;
+        } catch (Exception e) {
+            user = Extra;
+            Toast.makeText(getApplicationContext(), "Static Error", Toast.LENGTH_SHORT).show();
+        }
 
         ListView listView = findViewById(R.id.listViewNotes);
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(user, Context.MODE_PRIVATE);
         HashSet<String> set = (HashSet<String>) sharedPreferences.getStringSet("notes", null);
+        notes = new ArrayList<>();
         if (set == null) {
 
             notes.add("Example note");
         } else {
             notes = new ArrayList(set);
         }
+
 
 //        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, notes);
         arrayAdapter = new CustomAdapter(this, notes);
@@ -72,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 notes.remove(itemToDelete);
                                 arrayAdapter.notifyDataSetChanged();
-                                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
+                                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(user, Context.MODE_PRIVATE);
                                 HashSet<String> set = new HashSet(MainActivity.notes);
                                 sharedPreferences.edit().putStringSet("notes", set).apply();
                             }
@@ -86,6 +103,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NoteEditorActivity.class);
                 intent.putExtra("noteId", -1);
+                startActivity(intent);
+            }
+        });
+        LogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Toast.makeText(getApplicationContext(), "Successfully logged out", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
